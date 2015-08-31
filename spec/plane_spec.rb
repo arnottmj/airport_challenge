@@ -8,7 +8,6 @@ describe Plane do
 
   it ' is not landed when created' do
     expect(subject).not_to be_landed
-
   end
 
   it {expect(subject).to respond_to :landing}

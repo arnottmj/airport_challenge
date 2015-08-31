@@ -2,8 +2,6 @@ require 'airport'
 
 describe Airport do
 
-  describe 'create'
-
   it 'has a default capacity when created' do
     expect(subject.capacity).to eq Airport::DEFAULT_CAPACITY
   end
@@ -48,11 +46,11 @@ describe Airport do
       subject.landing(plane)
       expect{subject.landing(plane)}.to raise_error 'The plane is already in the airport'
     end
-
   end
 
   describe 'traffic control' do
     let(:plane) {double :plane}
+    
     before do
       allow(plane).to receive(:landing)
       allow(plane).to receive(:take_off)
@@ -77,7 +75,6 @@ describe Airport do
       it 'a plane should not be able to land' do
         expect(subject).to receive(:weather) {'stormy'}
         expect{subject.landing(plane)}.to raise_error 'The weather is too stormy to land'
-
       end
     end
   end
